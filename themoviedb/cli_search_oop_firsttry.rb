@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 class FindMovie
   def initialize(apikey, search)
     @apikey=apikey
@@ -45,7 +46,7 @@ class FindMovie
   # open browser window, for now on mac, to be extended to support other OSs, maybe lynx as well? 
   def open
     @index = @choice.to_i-1
-    @url = "http://sharemovi.es/movie/#{@moviesFound[@index][:id]}-#{@moviesFound[@index][:title].downcase.gsub(' ', '-')}"
+    @url = "http://sharemovi.es/movie/#{@moviesFound[@index][:id]}-#{@moviesFound[@index][:title].downcase.gsub(' ', '-').gsub(/[^-a-z]+/, '')}"
     system("open #{@url}")
   end
 
