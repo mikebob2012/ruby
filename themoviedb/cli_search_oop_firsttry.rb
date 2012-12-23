@@ -27,6 +27,7 @@ class FindMovie
 
   # show results
   def show
+    abort("No results found for '#{@search}'") if @moviesFound.empty? 
     @moviesFound.each_with_index do|movie, i|
       puts "#{i+1}) #{movie[:title]} (#{movie[:released]})"
     end
